@@ -1,6 +1,7 @@
 import joblib
 import re
 import gradio as gr
+import os
 
 # Load the models and vectorizers
 model1 = joblib.load('model_course_type (1).pkl')
@@ -84,5 +85,5 @@ iface = gr.Interface(
     inputs=gr.Textbox(label="Enter Course Name"), 
     outputs=gr.Textbox(label="Predictions")
 )
-
+iface.launch(server_name="0.0.0.0", server_port=int(os.environ.get("PORT", 8080)))
 iface.launch(share=True)
