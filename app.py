@@ -100,15 +100,10 @@ info_text = """
 iface = gr.Interface(
     fn=predict_course, 
     inputs=gr.Textbox(label="Enter Course Name"), 
-    outputs=gr.Textbox(label="Predictions")
+    outputs=[gr.Textbox(label="Predictions"), gr.Markdown(info_text)]
 )
 
-# Create a separate Gradio Markdown interface for additional information
-info_interface = gr.Interface(
-    fn=lambda: info_text, 
-    inputs=None, 
-    outputs=gr.Markdown()
-)
+
 
 print(f"Launching on port {os.environ.get('PORT', 8080)}")
 iface.launch(server_name="0.0.0.0", server_port=int(os.environ.get("PORT", 8080)))
