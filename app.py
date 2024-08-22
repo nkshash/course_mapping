@@ -97,14 +97,17 @@ info_text = """
 - **N (No):** No caution required. You can proceed with this course.
 """
 
-# Create Gradio interface
 iface = gr.Interface(
     fn=predict_course, 
     inputs=gr.Textbox(label="Enter Course Name"), 
-    outputs=[
-        gr.Textbox(label="Predictions"),
-        gr.Markdown(info_text)  # Display additional information
-    ]
+    outputs=gr.Textbox(label="Predictions")
+)
+
+# Create a separate Gradio Markdown interface for additional information
+info_interface = gr.Interface(
+    fn=lambda: info_text, 
+    inputs=None, 
+    outputs=gr.Markdown()
 )
 
 print(f"Launching on port {os.environ.get('PORT', 8080)}")
