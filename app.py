@@ -100,7 +100,7 @@ info_text = """
 iface = gr.Interface(
     fn=predict_course, 
     inputs=gr.Textbox(label="Enter Course Name"), 
-    outputs=[gr.Textbox(label="Predictions"), gr.Markdown(info_text)]
+    outputs=[gr.Textbox(label="Predictions")]
 )
 
 
