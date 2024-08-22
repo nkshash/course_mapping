@@ -79,11 +79,32 @@ def predict_course(course_name):
         caution_category = predict_caution_category(course_name)
         return f"Predicted category for '{course_name}': {predicted_category}\nPredicted caution category for '{course_name}': {caution_category}"
 
+info_text = """
+### Course Categories:
+- Dental: Dn
+- Design: De
+- Engineering: Eng
+- Law: L
+- Management: Mng
+- Mathematics: Mm
+- Medical: Me
+- Science: Sc
+- Technical: Tech
+- Others: O
+
+### Caution Flag:
+- **Y (Yes):** Caution required for this course. Please confirm with the product team before proceeding.
+- **N (No):** No caution required. You can proceed with this course.
+"""
+
 # Create Gradio interface
 iface = gr.Interface(
     fn=predict_course, 
     inputs=gr.Textbox(label="Enter Course Name"), 
-    outputs=gr.Textbox(label="Predictions")
+    outputs=[
+        gr.Textbox(label="Predictions"),
+        gr.Markdown(info_text)  # Display additional information
+    ]
 )
+
 iface.launch(server_name="0.0.0.0", server_port=int(os.environ.get("PORT", 8080)))
-iface.launch(share=True)
