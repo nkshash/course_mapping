@@ -114,7 +114,7 @@ html_content = """
 iface = gr.Interface(
         fn=predict_course, 
         inputs=gr.Textbox(label="Enter Course Name"), 
-        outputs=gr.Textbox(label="Predictions")
+        outputs=gr.Textbox(label="Predictions"), description=html_content
     )
 
 iface.launch(server_name="0.0.0.0",server_port=int(os.environ.get("PORT", 8080)))
