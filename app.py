@@ -3,10 +3,10 @@ import re
 import gradio as gr
 
 # Load the models and vectorizers
-model1 = joblib.load('model_course_type.pkl')
-model2 = joblib.load('model_caution_type.pkl')
-vectorizer1 = joblib.load('vectorizer_course_type.pkl')
-vectorizer2 = joblib.load('vectorizer_caution_type.pkl')
+model1 = joblib.load('model_course_type (1).pkl')
+model2 = joblib.load('model_caution_type (1).pkl')
+vectorizer1 = joblib.load('vectorizer_course_type (2).pkl')
+vectorizer2 = joblib.load('vectorizer_caution_type (2).pkl')
 
 # Define the caution list and direct mappings
 caution = ["Criminal", "Investigation", "Community & social service management", "Journalism", 
