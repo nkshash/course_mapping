@@ -1,20 +1,20 @@
 import joblib
 import re
 import gradio as gr
-import os
 
 # Load the models and vectorizers
-model1 = joblib.load('model_course_type (1).pkl')
-model2 = joblib.load('model_caution_type (1).pkl')
-vectorizer1 = joblib.load('vectorizer_course_type (2).pkl')
-vectorizer2 = joblib.load('vectorizer_caution_type (2).pkl')
+model1 = joblib.load('model_course_type.pkl')
+model2 = joblib.load('model_caution_type.pkl')
+vectorizer1 = joblib.load('vectorizer_course_type.pkl')
+vectorizer2 = joblib.load('vectorizer_caution_type.pkl')
 
 # Define the caution list and direct mappings
 caution = ["Criminal", "Investigation", "Community & social service management", "Journalism", 
            "Media", "Film", "Music", "TV", "Performing arts", "theatre", "Fashion design", 
            "Interior design", "Community integration", "Early childhood management", 
-           "Early learning programmes", "Educational support", "social service worker", 
-           "Education support"]
+           "Early learning", "Educational support", "social service", 
+           "Education support","home","Plumbing","Hospitality", "Hotel", "Sports", "Media", "Book keeping", 
+             "Career development", "recreation", "leisure", "Community"]
 
 direct_mappings = {
     "design": "De",
@@ -22,7 +22,6 @@ direct_mappings = {
     "dental": "De",
     "dentistry": "De",
     "engineering": "Eng",
-    "science": "Sc",
     "Law":"L",
     "Laws":"L",
     "Medicine":"Me",
@@ -38,6 +37,16 @@ direct_mappings = {
     "Medicine":"Me",
     "Medical":"Me",
     "Nursing":"Me",
+    "bs":"Sc",
+    "ms":"Sc",
+    "msc":"Sc",
+    "bsc":"Sc",
+    "mbbs":"Me",
+    "Btech":"Eng",
+    "Mtech":"Eng",
+    "Science":"Sc",
+    
+    
 }
 
 def predict_course_category(course_name):
@@ -74,36 +83,43 @@ def predict_course(course_name):
     caution_mark = check_caution_list(course_name)
 
     if caution_mark == "Y":
-        return f"Predicted category for '{course_name}': {predicted_category}\nCaution required for '{course_name}': Y"
+        return f"Course type for {course_name}: {predicted_category}\nCaution type for {course_name}: Y"
     else:
         caution_category = predict_caution_category(course_name)
-        return f"Predicted category for '{course_name}': {predicted_category}\nPredicted caution category for '{course_name}': {caution_category}"
+        return f"Course type for {course_name}: {predicted_category}\nCaution type for {course_name}: {caution_category}"
 
-info_text = """
-### Course Categories:
-- Dental: Dn
-- Design: De
-- Engineering: Eng
-- Law: L
-- Management: Mng
-- Mathematics: Mm
-- Medical: Me
-- Science: Sc
-- Technical: Tech
-- Others: O
-
-### Caution Flag:
-- **Y (Yes):** Caution required for this course. Please confirm with the product team before proceeding.
-- **N (No):** No caution required. You can proceed with this course.
+# # Create Gradio interface
+# iface = gr.Interface(
+#     fn=predict_course, 
+#     inputs=gr.Textbox(label="Enter Course Name"), 
+#     outputs=gr.Textbox(label="Predictions")
+# )
+html_content="""<div style="display:flex">
+<div style="flex:1"><h3>Terminology for the course type</h3>
+<ul>
+<li>Dn : Dental course</li>
+<li>De : Design course</li>
+<li>Eng : Engineering course (STEM)</li>
+<li>L : Law course</li>
+<li>Mng : Management course</li>
+<li>Me : Medical course</li>
+<li>Mm : Mathematics course (STEM)</li>
+<li>Sc : Science course (STEM)</li>
+<li>Tech : Technology course (STEM)</li>
+<li>O: Others</li></ul><div>
+<div style="flex:1;"><h3>Terminology for the caution type</h3>
+<ul>
+<li>Y : Caution flag Yes, Proceed after confirmation from product team</li>
+<li>N : Caution Flag No, You can proceed</li>
+<div>
+</div>
 """
+with gr.Blocks() as demo:
+    iface=gr.Interface( fn=predict_course, 
+                      inputs=gr.Textbox(label="Enter Course Name"), 
+                      outputs=gr.Textbox(label="Predictions"))
+    gr.HTML(html_content)
 
-iface = gr.Interface(
-    fn=predict_course, 
-    inputs=gr.Textbox(label="Enter Course Name"), 
-    outputs=[gr.Textbox(label="Predictions")]
-)
-
-
-
+iface.render()
 print(f"Launching on port {os.environ.get('PORT', 8080)}")
 iface.launch(server_name="0.0.0.0", server_port=int(os.environ.get("PORT", 8080)))
