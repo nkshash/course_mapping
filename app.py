@@ -118,7 +118,7 @@ with gr.Blocks() as demo:
     iface=gr.Interface( fn=predict_course, 
                       inputs=gr.Textbox(label="Enter Course Name"), 
                       outputs=gr.Textbox(label="Predictions"))
-    gr.HTML(html_content)
+
 
 iface.render()
 print(f"Launching on port {os.environ.get('PORT', 8080)}")
