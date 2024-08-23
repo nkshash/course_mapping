@@ -1,7 +1,7 @@
 import joblib
 import re
 import gradio as gr
-
+import os
 # Load the models and vectorizers
 model1 = joblib.load('model_course_type (1).pkl')
 model2 = joblib.load('model_caution_type (1).pkl')
