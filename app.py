@@ -110,13 +110,10 @@ html_content = """
 </div>
 """
 
-with gr.Blocks() as demo:
-    iface = gr.Interface(
+iface = gr.Interface(
         fn=predict_course, 
         inputs=gr.Textbox(label="Enter Course Name"), 
         outputs=gr.Textbox(label="Predictions")
     )
-    gr.HTML(html_content)
-    iface.render()
 
-demo.launch(share=True)
+iface.launch(server_name="0.0.0.0",server_port=int(os.environ.get("PORT", 8080)))
