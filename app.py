@@ -88,7 +88,11 @@ def predict_course(course_name):
 
 # HTML content for description
 html_content = """
-<div style="display:flex">
+<div style="text-align:center; margin-bottom:20px;">
+  <h2>Course Mapping Categories</h2>
+</div>
+<div style="display: flex">
+  <div style="flex:1">
   <div style="flex:1">
     <h3>Terminology for the course type</h3>
     <ul>
@@ -101,7 +105,7 @@ html_content = """
       <li>Mm : Mathematics course (STEM)</li>
       <li>Sc : Science course (STEM)</li>
       <li>Tech : Technology course (STEM)</li>
-      <li>O: Others</li>
+      <li>O : Others</li>
     </ul>
   </div>
   <div style="flex:1;">
