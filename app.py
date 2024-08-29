@@ -88,7 +88,6 @@ def predict_course(course_name):
 
 # HTML content for description
 html_content = """
-<p style="text-align:center;"><b>Course Mapping Categories</b></p>
 <div style="display: flex">
   <div style="flex:1">
   <div style="flex:1">
