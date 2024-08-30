@@ -20,8 +20,8 @@ caution = ["Criminal","childcare","community","theatre","theater","politics","Nu
 direct_mappings = {
    "drug":"Me",
    "management": "Mng",
-   "dental": "De",
-   "dentistry": "De",
+   "dental": "Dn",
+   "dentistry": "Dn",
    "engineering": "Eng",
    "Law":"L",
    "Laws":"L",
