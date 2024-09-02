@@ -10,7 +10,7 @@ vectorizer1 = joblib.load('vectorizer_course_type (2).pkl')
 vectorizer2 = joblib.load('vectorizer_caution_type (2).pkl')
 
 # Define the caution list and direct mappings
-caution = ["Criminal","childcare","community","theatre","theater","politics","Nursing","physiology","pHd","Philosophy","bachelor of design","bdes","bhms","bams","homeopathy","Ayurvedic","ayurveda", "Investigation", "Community & social service management", "Journalism", 
+caution = ["Criminal","childcare","community","theatre","theater","politics","Nursing","physiology","pHd","Philosophy","bachelor of design","bdes","bhms","bams","homeopathy","Ayurvedic","ayurveda", "Investigation", "Community & social service management", "Journalism","cordwainers","footwear",
           "Media", "Film", "Music", "TV", "Performing arts","fashion", "theatre", "Fashion design", 
           "Interior design", "Community integration", "Early childhood management", 
           "Early learning", "Educational support", "social service", 
