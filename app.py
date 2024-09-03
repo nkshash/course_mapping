@@ -41,7 +41,7 @@ direct_mappings = {
           "political":"O",
           "social":"O",
 "literature":"O",
-"studies":"O",
+"theology":"O",
    "bs":"Sc",
    "ms":"Sc",
    "msc":"Sc",
