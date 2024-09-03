@@ -15,7 +15,7 @@ caution = ["Criminal","childcare","community","theatre","theater","politics","Nu
           "Interior design", "Community integration", "Early childhood management", 
           "Early learning", "Educational support", "social service", 
           "Education support","home","Plumbing","Hospitality", "Hotel", "Sports", "Media", "Book keeping", 
-          "Career development", "recreation", "leisure", "Community"]
+          "Career development", "recreation", "leisure", "Community","Mphil","mst","literature","dphil","politics","Russian","slavonic","bphil","language","languages","mediaeval","islamic","wildlife","history","education","ecowild","Chinese","archaeology","life"]
 
 direct_mappings = {
    "drug":"Me",
@@ -40,6 +40,8 @@ direct_mappings = {
    "Nursing":"Me",
           "political":"O",
           "social":"O",
+"literature":"O",
+"studies":"O",
    "bs":"Sc",
    "ms":"Sc",
    "msc":"Sc",
